@@ -1,0 +1,213 @@
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anomaly Detection in Customer Reviews</title>
+</head>
+<body>
+    <h1>Anomaly Detection in Customer Reviews</h1>
+    <form id="uploadForm" enctype="multipart/form-data">
+        <input type="file" name="file" id="fileInput">
+        <input type="button" value="Upload" onclick="uploadFile()">
+    </form>
+
+    <div id="anomalyReviews" style="display: none;">
+        <h2>Anomaly Reviews</h2>
+        <div id="anomalyReviewsList"></div>
+    </div>
+
+    <script>
+        function uploadFile() {
+            var fileInput = document.getElementById('fileInput');
+            var file = fileInput.files[0];
+            var formData = new FormData();
+            formData.append('file', file);
+
+            fetch('/predict', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                displayAnomalyReviews(data.anomaly_reviews);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+
+        function displayAnomalyReviews(anomalyReviews) {
+            var anomalyReviewsList = document.getElementById('anomalyReviewsList');
+            anomalyReviewsList.innerHTML = '';  // Clear previous reviews
+
+            anomalyReviews.forEach(function(review) {
+                var reviewDiv = document.createElement('div');
+                reviewDiv.innerHTML = '<p><strong>Anomaly Review:</strong> ' + review.anomaly_review + '</p>' +
+                                     '<p><strong>Clean Text:</strong> ' + review.clean_text + '</p>';
+                anomalyReviewsList.appendChild(reviewDiv);
+            });
+
+            var anomalyReviewsDiv = document.getElementById('anomalyReviews');
+            anomalyReviewsDiv.style.display = 'block';
+        }
+    </script>
+</body>
+</html>
+-->
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anomaly Detection in Customer Reviews</title>
+</head>
+<body>
+    <h1>Anomaly Detection in Customer Reviews</h1>
+    <form id="uploadForm" enctype="multipart/form-data">
+        <input type="file" name="file" id="fileInput">
+        <input type="button" value="Upload" onclick="uploadFile()">
+    </form>
+
+    <div id="anomalyReviews" style="display: none;">
+        <h2>Anomaly Reviews</h2>
+        <div id="anomalyReviewsList"></div>
+    </div>
+
+    <script>
+        function uploadFile() {
+            var fileInput = document.getElementById('fileInput');
+            var file = fileInput.files[0];
+            var formData = new FormData();
+            formData.append('file', file);
+
+            fetch('/predict', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                displayAnomalyReviews(data.anomaly_reviews);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+
+        function displayAnomalyReviews(anomalyReviews) {
+            var anomalyReviewsList = document.getElementById('anomalyReviewsList');
+            anomalyReviewsList.innerHTML = '';  // Clear previous reviews
+
+            anomalyReviews.forEach(function(review) {
+                var reviewDiv = document.createElement('div');
+                reviewDiv.innerHTML = '<p><strong>Serial Number:</strong> ' + review.sequence_number + '</p>' +
+                                     '<p><strong>Anomaly Review:</strong> ' + review.anomaly_review + '</p>' +
+                                     '<p><strong>Clean Text:</strong> ' + review.clean_text + '</p>';
+                anomalyReviewsList.appendChild(reviewDiv);
+            });
+
+            var anomalyReviewsDiv = document.getElementById('anomalyReviews');
+            anomalyReviewsDiv.style.display = 'block';
+        }
+    </script>
+</body>
+</html>-->
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anomaly Detection in Customer Reviews</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+        form {
+            text-align: center;
+            margin-top: 20px;
+        }
+        #anomalyReviews {
+            margin: 20px;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        #anomalyReviews h2 {
+            text-align: center;
+        }
+        #anomalyReviewsList {
+            margin-top: 20px;
+        }
+        .anomalyReview {
+            margin-bottom: 20px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+       
+    </style>
+</head>
+<body>
+    <h1>Anomaly Detection in Customer Reviews</h1>
+    <form id="uploadForm" enctype="multipart/form-data">
+        <input type="file" name="file" id="fileInput">
+        <input type="button" value="Upload" onclick="uploadFile()">
+    </form>
+
+    <div id="anomalyReviews" style="display: none;">
+        <h2>Anomaly Reviews</h2>
+        <div id="anomalyReviewsList"></div>
+    </div>
+
+    <script>
+        function uploadFile() {
+            var fileInput = document.getElementById('fileInput');
+            var file = fileInput.files[0];
+            var formData = new FormData();
+            formData.append('file', file);
+
+            fetch('/predict', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                displayAnomalyReviews(data.anomaly_reviews);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+
+        function displayAnomalyReviews(anomalyReviews) {
+            var anomalyReviewsList = document.getElementById('anomalyReviewsList');
+            anomalyReviewsList.innerHTML = '';  // Clear previous reviews
+
+            anomalyReviews.forEach(function(review) {
+                var reviewDiv = document.createElement('div');
+                reviewDiv.classList.add('anomalyReview');
+                reviewDiv.innerHTML = '<p><strong>Serial Number:</strong> ' + review.sequence_number + '</p>' +
+                                     '<p><strong>Anomaly Review:</strong> ' + review.anomaly_review + '</p>' +
+                                     '<p><strong>Clean Text:</strong> ' + review.clean_text + '</p>';
+                anomalyReviewsList.appendChild(reviewDiv);
+            });
+
+            var anomalyReviewsDiv = document.getElementById('anomalyReviews');
+            anomalyReviewsDiv.style.display = 'block';
+        }
+    </script>
+    
+</body>
+</html>
